@@ -1,6 +1,6 @@
 ﻿namespace Lynx.Operations.Arithmetic
 {
-    public class Multiply : Operation
+    public class Multiplication : Operation
     {
         public override int Arity => 2;
 

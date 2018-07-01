@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lynx.Operations.Arithmetic
 {
-    public class Divide : Operation
+    public class Division : Operation
     {
         public override string Indentifier => "/";
 

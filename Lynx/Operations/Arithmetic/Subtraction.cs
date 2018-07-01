@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lynx.Operations.Arithmetic
 {
-    public class Subtract : Operation
+    public class Subtraction : Operation
     {
         public override string Indentifier => "-";
 

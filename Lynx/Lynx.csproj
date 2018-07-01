@@ -49,10 +49,10 @@
     <Compile Include="Memory.cs" />
     <Compile Include="Operation.cs" />
     <Compile Include="OperationsRegister.cs" />
-    <Compile Include="Operations\Arithmetic\Add.cs" />
-    <Compile Include="Operations\Arithmetic\Divide.cs" />
-    <Compile Include="Operations\Arithmetic\Multiply.cs" />
-    <Compile Include="Operations\Arithmetic\Subtract.cs" />
+    <Compile Include="Operations\Arithmetic\Addition.cs" />
+    <Compile Include="Operations\Arithmetic\Division.cs" />
+    <Compile Include="Operations\Arithmetic\Multiplication.cs" />
+    <Compile Include="Operations\Arithmetic\Subtraction.cs" />
     <Compile Include="Operations\For.cs" />
     <Compile Include="Operations\FormatString.cs" />
     <Compile Include="Operations\Logic\And.cs" />
@@ -65,6 +65,7 @@
     <Compile Include="Operations\WriteLine.cs" />
     <Compile Include="OperationToken.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="NamedArguments.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Token.cs" />
     <Compile Include="TokenChain.cs" />
