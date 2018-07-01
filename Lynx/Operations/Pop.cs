@@ -12,6 +12,8 @@ namespace Lynx.Operations
 
         public override int Arity => 0;
 
+        public override string VerboseIdentifier => "Pop";
+
         public override object[] Execute(Arguments arguments, Interpreter interpreter)
         {
             interpreter.Memory.Pop();

@@ -6,6 +6,8 @@
 
         public override int Arity => 1;
 
+        public override string VerboseIdentifier => "For";
+
         public override object[] Execute(Arguments arguments, Interpreter interpreter)
         {
             var iterations = arguments.Get<int>(0);

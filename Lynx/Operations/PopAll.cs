@@ -8,6 +8,8 @@ namespace Lynx.Operations
 
         public override int Arity => 0;
 
+        public override string VerboseIdentifier => "PopAll";
+
         public override object[] Execute(Arguments arguments, Interpreter interpreter)
         {
             interpreter.Memory.Clear();

@@ -12,6 +12,8 @@ namespace Lynx.Operations.Arithmetic
 
         public override int Arity => 2;
 
+        public override string VerboseIdentifier => "Divide";
+
         public override object[] Execute(Arguments arguments, Interpreter interpreter)
         {
             var a = arguments.Get<double>(1);

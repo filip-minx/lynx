@@ -17,6 +17,8 @@ namespace Lynx.Operations
 
         public override int Arity => 1;
 
+        public override string VerboseIdentifier => "Format";
+
         public override object[] Execute(Arguments arguments, Interpreter interpreter)
         {
             var str = arguments.Get<string>(0);

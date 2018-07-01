@@ -12,6 +12,8 @@ namespace Lynx.Operations.Logic
 
         public override int Arity => 2;
 
+        public override string VerboseIdentifier => "Xor";
+
         public override object[] Execute(Arguments arguments, Interpreter interpreter)
         {
             var a = arguments.Get<int>(0);

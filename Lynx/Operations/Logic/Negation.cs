@@ -6,6 +6,8 @@
 
         public override int Arity => 1;
 
+        public override string VerboseIdentifier => "Negate";
+
         public override object[] Execute(Arguments arguments, Interpreter interpreter)
         {
             var arg = arguments.Get<int>(0);

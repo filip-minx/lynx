@@ -6,6 +6,8 @@
 
         public override string Indentifier => "+";
 
+        public override string VerboseIdentifier => "Add";
+
         public override object[] Execute(Arguments arguments, Interpreter interpreter)
         {
             var a = arguments.Get<double>(0);
