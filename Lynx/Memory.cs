@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
@@ -37,6 +38,28 @@ namespace Lynx
             Debug.WriteLine($"Stack pop: {value}");
 
             return value;
+        }
+
+        public object[] Pop(int count)
+        {
+            if (count > Count)
+            {
+                throw new InvalidOperationException("Attempt to pop more values than available.");
+            }
+
+            var data = new object[count];
+
+            for (int i = 0; i < count; i++)
+            {
+                data[i] = Pop();
+            }
+
+            return data;
+        }
+
+        public object[] PopAll()
+        {
+            return Pop(Count);
         }
 
         public object PopAt(int index)

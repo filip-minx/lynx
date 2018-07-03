@@ -1,6 +1,6 @@
 ﻿namespace Lynx
 {
-    abstract class Token
+    public abstract class Token
     {
         public abstract TokenType TokenType { get; }
 

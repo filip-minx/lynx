@@ -1,6 +1,6 @@
 ﻿namespace Lynx
 {
-    enum TokenType
+    public enum TokenType
     {
         Operation,
         Value

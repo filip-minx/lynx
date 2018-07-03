@@ -45,7 +45,11 @@
   <ItemGroup>
     <Compile Include="Arguments.cs" />
     <Compile Include="CodeParser.cs" />
-    <Compile Include="Interpreter.cs" />
+    <Compile Include="ICodeParser.cs" />
+    <Compile Include="ILanguageProvider.cs" />
+    <Compile Include="LynxRuntime.cs" />
+    <Compile Include="LynxAssembly.cs" />
+    <Compile Include="LynxLanguageProvider.cs" />
     <Compile Include="Memory.cs" />
     <Compile Include="Operation.cs" />
     <Compile Include="OperationsRegister.cs" />
@@ -53,6 +57,8 @@
     <Compile Include="Operations\Arithmetic\Division.cs" />
     <Compile Include="Operations\Arithmetic\Multiplication.cs" />
     <Compile Include="Operations\Arithmetic\Subtraction.cs" />
+    <Compile Include="Operations\BlockTerminator.cs" />
+    <Compile Include="Operations\DumpStack.cs" />
     <Compile Include="Operations\For.cs" />
     <Compile Include="Operations\FormatString.cs" />
     <Compile Include="Operations\Logic\And.cs" />
@@ -72,6 +78,8 @@
     <Compile Include="TokenType.cs" />
     <Compile Include="ValueToken.cs" />
     <Compile Include="ValueType.cs" />
+    <Compile Include="VerboseCodeParser.cs" />
+    <Compile Include="VerboseLynxLanguageProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Lynx
 {
@@ -9,26 +11,39 @@ namespace Lynx
         
         static void Main(string[] args)
         {
-            var debug = false;
+            //var debug = false;
 
-            if (debug)
-            {
-                var output = new StreamWriter(Console.OpenStandardOutput())
-                {
-                    AutoFlush = true
-                };
+            //if (debug)
+            //{
+            //    var output = new StreamWriter(Console.OpenStandardOutput())
+            //    {
+            //        AutoFlush = true
+            //    };
 
-                Console.SetOut(output);
+            //    Console.SetOut(output);
 
-                var listener = new TextWriterTraceListener(output);
-                Debug.AutoFlush = true;
-                Debug.Listeners.Add(listener);
-            }
+            //    var listener = new TextWriterTraceListener(output);
+            //    Debug.AutoFlush = true;
+            //    Debug.Listeners.Add(listener);
+            //}
 
-            var interpreter = new Interpreter();
+            var code =
+@"2 For
+	2 For
+		""x: {@1}, y: {0}"" Format
+        WriteLine
+    ;
+;
+PopAll";
 
-            var result = interpreter.Execute("2f2f\"x:{@1} y:{0}\"$l;;ˇ");
+            //var code = "2f2f\"x: {@1}, y: {0}\"$l;;ˇ";
 
+            var lynxLang = new VerboseLynxLanguageProvider();
+            var assembly = lynxLang.Compile(code);
+
+            var runtime = new LynxRuntime();
+            var result = runtime.Execute(assembly);
+            
             Console.WriteLine(result);
 
             Console.ReadKey();

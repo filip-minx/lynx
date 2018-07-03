@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace Lynx
 {
-    class CodeParser
+    class CodeParser : ICodeParser
     {
         private static Regex operationPattern = new Regex(@"\s*(?!""|\.|\s)\D");
         private static Regex integerPattern = new Regex(@"\s*\d+(?!\.)");

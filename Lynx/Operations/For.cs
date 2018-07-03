@@ -2,25 +2,25 @@
 {
     public class For : Operation
     {
-        public override string Indentifier => "f";
+        public override string Identifier => "f";
 
         public override int Arity => 1;
 
         public override string VerboseIdentifier => "For";
 
-        public override object[] Execute(Arguments arguments, Interpreter interpreter)
+        public override object[] Execute(Arguments arguments, LynxRuntime runtime)
         {
             var iterations = arguments.Get<int>(0);
 
-            var pos = interpreter.Tokens.Position;
+            var pos = runtime.Tokens.Position;
 
             for (int i = 0; i < iterations; i++)
             {
-                interpreter.Tokens.Position = pos;
+                runtime.Tokens.Position = pos;
 
-                interpreter.Memory.Push(i);
+                runtime.Memory.Push(i);
 
-                interpreter.ExecuteSubroutine(interpreter.Tokens, ";");
+                runtime.ExecuteSubroutine(";");
             }
 
             return null;

@@ -13,13 +13,13 @@ namespace Lynx.Operations
 
         private static string PeekPattern = "@";
 
-        public override string Indentifier => "$";
+        public override string Identifier => "$";
 
         public override int Arity => 1;
 
         public override string VerboseIdentifier => "Format";
 
-        public override object[] Execute(Arguments arguments, Interpreter interpreter)
+        public override object[] Execute(Arguments arguments, LynxRuntime runtime)
         {
             var str = arguments.Get<string>(0);
 
@@ -57,7 +57,7 @@ namespace Lynx.Operations
 
                 int index = int.Parse(peek ? pattern.Substring(1) : pattern);
 
-                formatArguments[index] = peek ? interpreter.Memory[index] : interpreter.Memory.PopAt(index);
+                formatArguments[index] = peek ? runtime.Memory[index] : runtime.Memory.PopAt(index);
             }
 
             str = formatRegex.Replace(str, "{$2}");

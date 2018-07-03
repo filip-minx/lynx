@@ -4,15 +4,15 @@ namespace Lynx.Operations
 {
     public class PopAll : Operation
     {
-        public override string Indentifier => "ˇ";
+        public override string Identifier => "ˇ";
 
         public override int Arity => 0;
 
         public override string VerboseIdentifier => "PopAll";
 
-        public override object[] Execute(Arguments arguments, Interpreter interpreter)
+        public override object[] Execute(Arguments arguments, LynxRuntime runtime)
         {
-            interpreter.Memory.Clear();
+            runtime.Memory.Clear();
 
             return null;
         }

@@ -5,24 +5,23 @@ using System.Linq;
 
 namespace Lynx
 {
-    public class Interpreter
+    public class LynxRuntime
     {
         internal Memory Memory = new Memory();
-        internal TokenChain Tokens { get; private set; }
-
-        private OperationsRegister operations = new OperationsRegister();
+        internal LynxAssembly Assembly { get; private set; }
+        internal TokenChain Tokens => Assembly.Tokens;
 
         private CodeParser parser = new CodeParser();
 
         public object DefaultResult { get; set; } = null;
 
-        public string Execute(string code)
+        public string Execute(LynxAssembly assembly)
         {
             Memory.Clear();
 
-            Tokens = new TokenChain(parser.Parse(code));
+            Assembly = assembly;
 
-            while (Tokens.TryGetNext(out var token))
+            while (assembly.Tokens.TryGetNext(out var token))
             {
                 ProcessToken(token);
             }
@@ -35,9 +34,9 @@ namespace Lynx
             return Memory.Pop().ToString();
         }
 
-        internal void ExecuteSubroutine(TokenChain tokens, string terminator = ";")
+        internal void ExecuteSubroutine(string terminator = ";")
         {
-            while (Tokens.TryGetNext(out var token))
+            while (Assembly.Tokens.TryGetNext(out var token))
             {
                 if (token.Pattern == terminator)
                 {
@@ -58,7 +57,7 @@ namespace Lynx
             {
                 Debug.WriteLine($"Execute: {token.Pattern}");
 
-                var operation = operations.GetOperation(token.Pattern);
+                var operation = OperationsRegister.GetOperation(token.Pattern);
 
                 var arguments = PopArguments(operation.Arity);
 

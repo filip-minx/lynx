@@ -2,13 +2,13 @@
 {
     public class Negation : Operation
     {
-        public override string Indentifier => "!";
+        public override string Identifier => "!";
 
         public override int Arity => 1;
 
         public override string VerboseIdentifier => "Negate";
 
-        public override object[] Execute(Arguments arguments, Interpreter interpreter)
+        public override object[] Execute(Arguments arguments, LynxRuntime runtime)
         {
             var arg = arguments.Get<int>(0);
 

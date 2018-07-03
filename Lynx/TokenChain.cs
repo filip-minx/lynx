@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Lynx
 {
-    class TokenChain
+    public class TokenChain
     {
         private readonly List<Token> tokens;
 

@@ -8,13 +8,13 @@ namespace Lynx.Operations.Logic
 {
     public class And : Operation
     {
-        public override string Indentifier => "&";
+        public override string Identifier => "&";
 
         public override int Arity => 2;
 
         public override string VerboseIdentifier => "And";
 
-        public override object[] Execute(Arguments arguments, Interpreter interpreter)
+        public override object[] Execute(Arguments arguments, LynxRuntime runtime)
         {
             var a = arguments.Get<int>(0);
             var b = arguments.Get<int>(1);

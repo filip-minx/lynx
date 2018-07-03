@@ -5,28 +5,35 @@ using System.Reflection;
 
 namespace Lynx
 {
-    public class OperationsRegister
+    public static class OperationsRegister
     {
-        private Dictionary<string, Operation> operations = new Dictionary<string, Operation>();
+        private static Dictionary<string, Operation> operationsToIdentifierMap = new Dictionary<string, Operation>();
+        private static Dictionary<string, Operation> operationsToVerboseMap = new Dictionary<string, Operation>();
 
-        public OperationsRegister()
+        static OperationsRegister()
         {
             InitOperations();
         }
 
-        public Operation GetOperation(string identifier)
+        public static Operation GetOperation(string identifier)
         {
-            return operations[identifier];
+            return operationsToIdentifierMap[identifier];
         }
 
-        public void InitOperations()
+        public static Operation GetOperationVerbose(string verboseIdentifier)
+        {
+            return operationsToVerboseMap[verboseIdentifier];
+        }
+
+        public static void InitOperations()
         {
             var operationTypes = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsSubclassOf(typeof(Operation)));
 
             foreach (Type type in operationTypes)
             {
                 var operation = (Operation)Activator.CreateInstance(type);
-                operations.Add(operation.Indentifier, operation);
+                operationsToIdentifierMap.Add(operation.Identifier, operation);
+                operationsToVerboseMap.Add(operation.VerboseIdentifier, operation);
             }
         }
     }

@@ -6,11 +6,11 @@ namespace Lynx.Operations
     {
         public override int Arity => 1;
 
-        public override string Indentifier => "l";
+        public override string Identifier => "l";
 
         public override string VerboseIdentifier => "WriteLine";
 
-        public override object[] Execute(Arguments arguments, Interpreter interpreter)
+        public override object[] Execute(Arguments arguments, LynxRuntime runtime)
         {
             Console.WriteLine(arguments.Get<string>(0));
 
