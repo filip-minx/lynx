@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Lynx
 {
-    public class TokenChain
+    public class TokenChain : IEnumerable<Token>
     {
         private readonly List<Token> tokens;
 
@@ -54,6 +54,16 @@ namespace Lynx
         public override string ToString()
         {
             return string.Join(" ", tokens);
+        }
+
+        public IEnumerator<Token> GetEnumerator()
+        {
+            return ((IEnumerable<Token>)tokens).GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return ((IEnumerable<Token>)tokens).GetEnumerator();
         }
     }
 }

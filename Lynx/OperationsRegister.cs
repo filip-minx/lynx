@@ -25,6 +25,11 @@ namespace Lynx
             return operationsToVerboseMap[verboseIdentifier];
         }
 
+        public static T GetOperation<T>() where T : Operation
+        {
+            return (T)operationsToIdentifierMap.First(o => o.Value.GetType() == typeof(T)).Value;
+        }
+
         public static void InitOperations()
         {
             var operationTypes = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsSubclassOf(typeof(Operation)));

@@ -41,10 +41,6 @@ namespace Lynx
                     var operation = OperationsRegister.GetOperationVerbose(match.Value);
                     yield return new OperationToken(operation.Identifier);
                 }
-                
-                
-
-                
             }
         }
     }
