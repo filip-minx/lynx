@@ -65,7 +65,7 @@ namespace Lynx
         public object PopAt(int index)
         {
             // The index needs to be reversed because the pop 
-            // operation takes a value from the end of the list.
+            // operation indexes items from the end of the list.
             var reversedIndex = ReverseIndex(index);
 
             var value = data[reversedIndex];
@@ -75,6 +75,20 @@ namespace Lynx
             Debug.WriteLine($"Stack pop at {reversedIndex}: {value}");
 
             return value;
+        }
+
+        public object PeekAt(int index)
+        {
+            // The index needs to be reversed because the peek 
+            // operation indexes items from the end of the list.
+            var reversedIndex = ReverseIndex(index);
+            
+            return data[reversedIndex];
+        }
+
+        public object Peek()
+        {
+            return PeekAt(0);
         }
 
         public void Clear()

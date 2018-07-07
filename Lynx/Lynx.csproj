@@ -58,6 +58,7 @@
     <Compile Include="Operations\Arithmetic\Multiplication.cs" />
     <Compile Include="Operations\Arithmetic\Subtraction.cs" />
     <Compile Include="Operations\BlockTerminator.cs" />
+    <Compile Include="Operations\CopyToTop.cs" />
     <Compile Include="Operations\DumpStack.cs" />
     <Compile Include="Operations\For.cs" />
     <Compile Include="Operations\FormatString.cs" />
