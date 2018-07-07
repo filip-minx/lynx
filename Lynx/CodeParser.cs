@@ -22,6 +22,11 @@ namespace Lynx
 
             while (position != code.Length)
             {
+                if (IsNext(whiteSpaceRegex))
+                {
+                    Read(whiteSpaceRegex);
+                }
+
                 if (IsNext(operationPattern, out var operationMatch))
                 {
                     yield return new OperationToken(Read(operationMatch));
@@ -71,6 +76,11 @@ namespace Lynx
             match = regex.Match(code, position);
 
             return match.Index == position && match.Success;
+        }
+
+        private bool IsNext(Regex regex)
+        {
+            return regex.IsMatch(code, position);
         }
 
         private string Read(Regex regex)
