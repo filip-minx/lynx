@@ -17,6 +17,7 @@ namespace Lynx
 
         public string Execute(LynxAssembly assembly)
         {
+            assembly.Tokens.Position = 0;
             Memory.Clear();
 
             Assembly = assembly;
