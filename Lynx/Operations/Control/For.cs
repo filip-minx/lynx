@@ -1,4 +1,4 @@
-﻿namespace Lynx.Operations
+﻿namespace Lynx.Operations.Control
 {
     public class For : Operation
     {

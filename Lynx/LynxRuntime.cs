@@ -48,6 +48,17 @@ namespace Lynx
             }
         }
 
+        internal void SkipSubroutine(string terminator = ";")
+        {
+            while (Assembly.Tokens.TryGetNext(out var token))
+            {
+                if (token.Pattern == terminator)
+                {
+                    return;
+                }
+            }
+        }
+
         private void ProcessToken(Token token)
         {
             if (token.TokenType == TokenType.Value)

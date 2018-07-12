@@ -1,5 +1,5 @@
 ﻿using Lynx.Operations;
-using System;
+using Lynx.Operations.Control;
 using System.Collections.Generic;
 using System.Text;
 
@@ -12,7 +12,8 @@ namespace Lynx
 
         private HashSet<Operation> indentIncreasingOperations = new HashSet<Operation>()
         {
-            OperationsRegister.GetOperation<For>()
+            OperationsRegister.GetOperation<For>(),
+            OperationsRegister.GetOperation<TwoWayCondition>()
         };
 
         private HashSet<Operation> indentDecreasingOperations = new HashSet<Operation>()

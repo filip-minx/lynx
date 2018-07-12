@@ -58,9 +58,11 @@
     <Compile Include="Operations\Arithmetic\Multiplication.cs" />
     <Compile Include="Operations\Arithmetic\Subtraction.cs" />
     <Compile Include="Operations\BlockTerminator.cs" />
+    <Compile Include="Operations\Chance.cs" />
+    <Compile Include="Operations\Control\TwoWayCondition.cs" />
     <Compile Include="Operations\CopyToTop.cs" />
     <Compile Include="Operations\DumpStack.cs" />
-    <Compile Include="Operations\For.cs" />
+    <Compile Include="Operations\Control\For.cs" />
     <Compile Include="Operations\FormatString.cs" />
     <Compile Include="Operations\Logic\And.cs" />
     <Compile Include="Operations\Logic\Negation.cs" />
