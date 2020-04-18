@@ -1,43 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Diagnostics;
 
 namespace Lynx
 {
     public class LynxRuntime
     {
-        internal Memory Memory = new Memory();
-        internal LynxAssembly Assembly { get; private set; }
-        internal TokenChain Tokens => Assembly.Tokens;
+        public Memory Memory { get; private set; } = new Memory();
 
-        private CodeParser parser = new CodeParser();
+        internal TokenChain Tokens { get; set; }
 
-        public object DefaultResult { get; set; } = null;
-
-        public string Execute(LynxAssembly assembly)
+        public void Execute(TokenChain tokens)
         {
-            assembly.Tokens.Position = 0;
-            Memory.Clear();
+            Tokens = tokens;
 
-            Assembly = assembly;
-
-            while (assembly.Tokens.TryGetNext(out var token))
+            while (tokens.TryGetNext(out var token))
             {
                 ProcessToken(token);
             }
-
-            if (Memory.Count == 0)
-            {
-                return DefaultResult != null ? DefaultResult.ToString() : String.Empty;
-            }
-
-            return Memory.Pop().ToString();
         }
 
         internal void ExecuteSubroutine(string terminator = ";")
         {
-            while (Assembly.Tokens.TryGetNext(out var token))
+            while (Tokens.TryGetNext(out var token))
             {
                 if (token.Pattern == terminator)
                 {
@@ -50,7 +33,7 @@ namespace Lynx
 
         internal void SkipSubroutine(string terminator = ";")
         {
-            while (Assembly.Tokens.TryGetNext(out var token))
+            while (Tokens.TryGetNext(out var token))
             {
                 if (token.Pattern == terminator)
                 {

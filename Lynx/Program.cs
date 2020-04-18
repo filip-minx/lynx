@@ -1,63 +1,42 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace Lynx
 {
     class Program
     {
-        
         static void Main(string[] args)
         {
-            //var debug = false;
-
-            //if (debug)
-            //{
-            //    var output = new StreamWriter(Console.OpenStandardOutput())
-            //    {
-            //        AutoFlush = true
-            //    };
-
-            //    Console.SetOut(output);
-
-            //    var listener = new TextWriterTraceListener(output);
-            //    Debug.AutoFlush = true;
-            //    Debug.Listeners.Add(listener);
-            //}
-
-//            var code =
-//@"2 For
-//	2 For
-//		""x: {@1}, y: {0}"" Format
-//        WriteLine
-//    ;
-//;
-//PopAll";
-
-            var code = "2f2f\"x: {@1}, y: {0}\"$l;;ˇ";
-
-            var lynxLang = new LynxLanguageProvider();
-            var verbLynx = new VerboseLynxLanguageProvider();
-            var assembly = lynxLang.Compile(code);
+            var languageProvider = GetLanguageProvider();
+            var code = GetCode();
 
             var runtime = new LynxRuntime();
-            var result = runtime.Execute(assembly);
 
-            var gc = lynxLang.GenerateCode(assembly);
+            runtime.Execute(
+                languageProvider.Compile(code));
+        }
 
-            Console.WriteLine(gc);
+        private static ILanguageProvider GetLanguageProvider()
+        {
+            if (NamedArguments.GetAs("Verbose", false))
+            {
+                return new VerboseLynxLanguageProvider();
+            }
+            else
+            {
+                return new LynxLanguageProvider();
+            }
+        }
 
-            var vgc = verbLynx.GenerateCode(assembly);
+        private static string GetCode()
+        {
+            if (!NamedArguments.TryGetAs("CodeFile", out string codeFile))
+            {
+                Console.WriteLine("Missing argument \"CodeFile\"");
+                Environment.Exit(1);
+            }
 
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-
-            Console.WriteLine(vgc);
-
-            Console.ReadKey();
+            return File.ReadAllText(codeFile);
         }
     }
 }

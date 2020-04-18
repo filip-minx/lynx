@@ -6,7 +6,7 @@ namespace Lynx
 {
     public static class NamedArguments
     {
-        private static Dictionary<string, string> arguments = new Dictionary<string, string>();
+        private static readonly Dictionary<string, string> arguments = new Dictionary<string, string>();
 
         static NamedArguments()
         {
@@ -15,7 +15,7 @@ namespace Lynx
 
         private static void ParseArguments()
         {
-            var namedArgumentRegex = new Regex(@"^\s*-\s*.+");
+            var namedArgumentRegex = new Regex(@"^\s*--\s*.+");
 
             var args = Environment.GetCommandLineArgs();
 
@@ -27,8 +27,7 @@ namespace Lynx
 
                 if (namedArgumentRegex.IsMatch(name))
                 {
-                    name = name.Substring(name.IndexOf('-') + 1);
-                    value = null;
+                    name = name.Substring(name.IndexOf("--") + 2);
 
                     if ((i < args.Length - 1) && (!namedArgumentRegex.IsMatch(args[i + 1])))
                     {
@@ -49,12 +48,24 @@ namespace Lynx
         {
             if (!arguments.TryGetValue(argName, out var strValue))
             {
-                value = default(T);
+                value = default;
+
                 return false;
             }
 
             value = (T)Convert.ChangeType(strValue, typeof(T));
+
             return true;
+        }
+
+        public static T GetAs<T>(string argName, T defaultValue)
+        {
+            if (!TryGetAs(argName, out T value))
+            {
+                return defaultValue;
+            }
+
+            return value;
         }
     }
 }

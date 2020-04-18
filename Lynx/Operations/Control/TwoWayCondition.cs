@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Lynx.Operations.Control
+﻿namespace Lynx.Operations.Control
 {
     public class TwoWayCondition : Operation
     {
@@ -28,7 +22,7 @@ namespace Lynx.Operations.Control
                 runtime.SkipSubroutine(";");
                 runtime.ExecuteSubroutine(";");
             }
-            
+
 
             return null;
         }

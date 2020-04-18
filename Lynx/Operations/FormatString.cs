@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Lynx.Operations
 {
@@ -24,10 +20,10 @@ namespace Lynx.Operations
             var str = arguments.Get<string>(0);
 
             var matches = formatRegex.Matches(str);
-            
+
             var formatPatterns = new SortedList<int, string>();
             var formatArguments = new object[matches.Count];
-            
+
             foreach (Match match in matches)
             {
                 var pattern = match.Groups[1].Value;
@@ -48,7 +44,7 @@ namespace Lynx.Operations
                     formatPatterns.Add(index, pattern);
                 }
             }
-            
+
             for (int i = formatPatterns.Count - 1; i >= 0; i--)
             {
                 var pattern = formatPatterns[i];

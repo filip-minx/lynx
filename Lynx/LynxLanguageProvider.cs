@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 
 namespace Lynx
 {
@@ -7,22 +6,22 @@ namespace Lynx
     {
         ICodeParser parser = new CodeParser();
 
-        public LynxAssembly Compile(string code)
+        public TokenChain Compile(string code)
         {
             var tokens = parser.Parse(code);
 
-            var assembly = new LynxAssembly(tokens);
+            var assembly = new TokenChain(tokens);
 
             return assembly;
         }
 
-        public string GenerateCode(LynxAssembly assembly)
+        public string GenerateCode(TokenChain tokens)
         {
             var code = new StringBuilder();
 
             Token lastToken = null;
 
-            foreach (var token in assembly.Tokens)
+            foreach (var token in tokens)
             {
                 if (token.TokenType == TokenType.Operation)
                 {

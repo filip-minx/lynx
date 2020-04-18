@@ -7,10 +7,11 @@
     <ProjectGuid>{72FFA152-17F2-4BB2-9602-A86D2609DA68}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Lynx</RootNamespace>
-    <AssemblyName>Lynx</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <AssemblyName>lynx</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -48,7 +49,6 @@
     <Compile Include="ICodeParser.cs" />
     <Compile Include="ILanguageProvider.cs" />
     <Compile Include="LynxRuntime.cs" />
-    <Compile Include="LynxAssembly.cs" />
     <Compile Include="LynxLanguageProvider.cs" />
     <Compile Include="Memory.cs" />
     <Compile Include="Operation.cs" />

@@ -12,18 +12,6 @@ namespace Lynx
 
         public int Count => tokens.Count;
 
-        public Token this[int index]
-        {
-            get
-            {
-                return tokens[index];
-            }
-            set
-            {
-                tokens[index] = value;
-            }
-        }
-
         public TokenChain(IEnumerable<Token> tokens)
         {
             this.tokens = tokens.ToList();

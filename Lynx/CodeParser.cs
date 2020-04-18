@@ -6,11 +6,11 @@ namespace Lynx
 {
     class CodeParser : ICodeParser
     {
-        private static Regex operationPattern = new Regex(@"\s*(?!""|\.|\s)\D");
-        private static Regex integerPattern = new Regex(@"\s*\d+(?!\.)");
-        private static Regex floatPattern = new Regex(@"\s*\d*\.\d*");
-        private static Regex stringPattern = new Regex(@"\s*([""'])((\\{2})*|(.*?[^\\](\\{2})*))\1");
-        private static Regex whiteSpaceRegex = new Regex(@"(\s)");
+        private static Regex operationPattern = new Regex(@"\G\s*(?!""|\.|\s)\D");
+        private static Regex integerPattern = new Regex(@"\G\s*\d+(?!\.)");
+        private static Regex floatPattern = new Regex(@"\G\s*\d*\.\d*");
+        private static Regex stringPattern = new Regex(@"\G\s*([""'])((\\{2})*|(.*?[^\\](\\{2})*))\1");
+        private static Regex whiteSpaceRegex = new Regex(@"\G\s+");
 
         private int position;
         private string code;

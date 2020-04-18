@@ -2,7 +2,7 @@
 {
     public interface ILanguageProvider
     {
-        LynxAssembly Compile(string code);
-        string GenerateCode(LynxAssembly assembly);
+        TokenChain Compile(string code);
+        string GenerateCode(TokenChain assembly);
     }
 }

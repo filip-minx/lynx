@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Lynx.Operations
+﻿namespace Lynx.Operations
 {
     public class PopAll : Operation
     {

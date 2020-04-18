@@ -82,7 +82,7 @@ namespace Lynx
             // The index needs to be reversed because the peek 
             // operation indexes items from the end of the list.
             var reversedIndex = ReverseIndex(index);
-            
+
             return data[reversedIndex];
         }
 

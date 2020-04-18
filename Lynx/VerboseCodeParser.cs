@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace Lynx
@@ -19,8 +18,8 @@ namespace Lynx
 
             foreach (Match match in matches)
             {
-                
-                
+
+
                 if (integerPattern.Match(match.Value).Success)
                 {
                     yield return new ValueToken(match.Value, ValueType.Integer);

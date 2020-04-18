@@ -1,5 +1,6 @@
 ﻿using Lynx.Operations;
 using Lynx.Operations.Control;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -21,16 +22,16 @@ namespace Lynx
             OperationsRegister.GetOperation<BlockTerminator>()
         };
 
-        public LynxAssembly Compile(string code)
+        public TokenChain Compile(string code)
         {
             var tokens = parser.Parse(code);
 
-            var assembly = new LynxAssembly(tokens);
+            var assembly = new TokenChain(tokens);
 
             return assembly;
         }
 
-        public string GenerateCode(LynxAssembly assembly)
+        public string GenerateCode(TokenChain tokens)
         {
             var sb = new StringBuilder();
 
@@ -38,17 +39,24 @@ namespace Lynx
 
             Token lastToken = null;
 
-            foreach (var token in assembly.Tokens)
+            foreach (var token in tokens)
             {
                 FormatWhitespace(token, lastToken, sb);
 
-                if (token.TokenType == TokenType.Operation)
+                switch (token)
                 {
-                    sb.Append(OperationsRegister.GetOperation(token.Pattern).VerboseIdentifier);
-                }
-                else
-                {
-                    sb.Append(token.Pattern);
+                    case OperationToken operation:
+                        sb.Append(OperationsRegister.GetOperation(operation.Pattern).VerboseIdentifier);
+                        break;
+
+                    case ValueToken value:
+                        sb.Append(value.ValueType == ValueType.String
+                            ? $"\"{value.Pattern}\""
+                            : value.Pattern);
+                        break;
+
+                    default:
+                        throw new InvalidOperationException("Invalid token type.");
                 }
 
                 lastToken = token;
@@ -60,7 +68,7 @@ namespace Lynx
         private void FormatWhitespace(Token currentToken, Token lastToken, StringBuilder sb)
         {
             if (lastToken == null) return;
-            
+
             if (lastToken.TokenType == TokenType.Operation)
             {
                 sb.AppendLine();
