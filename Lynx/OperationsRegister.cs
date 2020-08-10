@@ -10,6 +10,8 @@ namespace Lynx
         private static Dictionary<string, Operation> operationsToIdentifierMap = new Dictionary<string, Operation>();
         private static Dictionary<string, Operation> operationsToVerboseMap = new Dictionary<string, Operation>();
 
+        public static IEnumerable<Operation> Operations => operationsToIdentifierMap.Values;
+
         static OperationsRegister()
         {
             InitOperations();
@@ -17,12 +19,22 @@ namespace Lynx
 
         public static Operation GetOperation(string identifier)
         {
-            return operationsToIdentifierMap[identifier];
+            if (!operationsToIdentifierMap.TryGetValue(identifier, out var operation))
+            {
+                throw new InvalidOperationException($"Unknown operation identifier \"{identifier}\"");
+            }
+
+            return operation;
         }
 
         public static Operation GetOperationVerbose(string verboseIdentifier)
         {
-            return operationsToVerboseMap[verboseIdentifier];
+            if (!operationsToVerboseMap.TryGetValue(verboseIdentifier, out var operation))
+            {
+                throw new InvalidOperationException($"Unknown operation identifier \"{verboseIdentifier}\"");
+            }
+
+            return operation;
         }
 
         public static T GetOperation<T>() where T : Operation

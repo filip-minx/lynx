@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 
 namespace Lynx
 {
@@ -7,6 +9,11 @@ namespace Lynx
     {
         static void Main(string[] args)
         {
+            if (TryPrintCommands())
+            {
+                Environment.Exit(0);
+            }
+
             var languageProvider = GetLanguageProvider();
             var code = GetCode();
 
@@ -30,13 +37,34 @@ namespace Lynx
 
         private static string GetCode()
         {
-            if (!NamedArguments.TryGetAs("CodeFile", out string codeFile))
+            if (NamedArguments.TryGetAs("CodeFile", out string codeFile))
             {
-                Console.WriteLine("Missing argument \"CodeFile\"");
-                Environment.Exit(1);
+                return File.ReadAllText(codeFile);
+            }
+            
+            if (NamedArguments.TryGetAs("CodeText", out string codeText))
+            {
+                return codeText;
             }
 
-            return File.ReadAllText(codeFile);
+            Console.WriteLine("Missing code argument. Use either \"--CodeFile\" or \"--CodeText\" argument to input the code.");
+            Environment.Exit(1);
+            return null;
+        }
+
+        private static bool TryPrintCommands()
+        {
+            if (NamedArguments.GetAs("PrintCommands", false))
+            {
+                foreach (var o in OperationsRegister.Operations)
+                {
+                    Console.WriteLine($"{o.Identifier} ({o.VerboseIdentifier}), Name: {o.GetType().Name}, Arity: {o.Arity}");
+                }
+
+                return true;
+            }
+
+            return false;
         }
     }
 }

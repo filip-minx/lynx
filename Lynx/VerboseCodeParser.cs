@@ -7,7 +7,7 @@ namespace Lynx
     {
         private static Regex operationPattern = new Regex(@"\s*(?!""|\.|\s)\D");
         private static Regex integerPattern = new Regex(@"^\s*\d+(?!\.)$");
-        private static Regex floatPattern = new Regex(@"\s*\d*\.\d*");
+        private static Regex floatPattern = new Regex(@"^\s*\d*\.\d*$");
         private static Regex stringPattern = new Regex(@"\s*([""'])((\\{2})*|(.*?[^\\](\\{2})*))\1");
 
         private Regex tokenParsingRegex = new Regex(@"\d*\.\d*|\d+(?!\.)|\w+|([""'])((\\{2})*|(.*?[^\\](\\{2})*))\1|;");
