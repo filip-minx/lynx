@@ -1,7 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
-using System.Reflection;
 
 namespace Lynx
 {
@@ -41,7 +39,7 @@ namespace Lynx
             {
                 return File.ReadAllText(codeFile);
             }
-            
+
             if (NamedArguments.TryGetAs("CodeText", out string codeText))
             {
                 return codeText;
