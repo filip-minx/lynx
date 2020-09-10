@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lynx.Operations
+namespace Lynx.Operations.IO
 {
     public class WriteLine : Operation
     {

@@ -59,7 +59,7 @@
     <Compile Include="Operations\Arithmetic\Subtraction.cs" />
     <Compile Include="Operations\BlockTerminator.cs" />
     <Compile Include="Operations\Chance.cs" />
-    <Compile Include="Operations\ClearConsole.cs" />
+    <Compile Include="Operations\IO\ClearConsole.cs" />
     <Compile Include="Operations\Control\Sleep.cs" />
     <Compile Include="Operations\Control\TwoWayCondition.cs" />
     <Compile Include="Operations\Control\While.cs" />
@@ -67,6 +67,7 @@
     <Compile Include="Operations\DumpStack.cs" />
     <Compile Include="Operations\Control\For.cs" />
     <Compile Include="Operations\FormatString.cs" />
+    <Compile Include="Operations\IO\ReadLine.cs" />
     <Compile Include="Operations\Logic\And.cs" />
     <Compile Include="Operations\Logic\Equals.cs" />
     <Compile Include="Operations\Logic\Greater.cs" />
@@ -76,8 +77,8 @@
     <Compile Include="Operations\Logic\Xor.cs" />
     <Compile Include="Operations\Pop.cs" />
     <Compile Include="Operations\PopAll.cs" />
-    <Compile Include="Operations\Write.cs" />
-    <Compile Include="Operations\WriteLine.cs" />
+    <Compile Include="Operations\IO\Write.cs" />
+    <Compile Include="Operations\IO\WriteLine.cs" />
     <Compile Include="OperationToken.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="NamedArguments.cs" />
