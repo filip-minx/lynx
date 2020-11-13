@@ -6,7 +6,7 @@ namespace Lynx
 {
     public static class NamedArguments
     {
-        private static readonly Dictionary<string, string> arguments = new Dictionary<string, string>();
+        private static readonly Dictionary<string, string> arguments = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
         static NamedArguments()
         {

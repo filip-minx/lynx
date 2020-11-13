@@ -22,7 +22,7 @@ namespace Lynx.Operations.Control
 
                 runtime.ExecuteSubroutine(";");
 
-                condition = (int)Convert.ChangeType(runtime.Memory.Pop(), typeof(int));
+                condition = (int)Convert.ChangeType(runtime.Stack.Pop(), typeof(int));
             }
 
             return null;

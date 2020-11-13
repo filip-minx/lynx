@@ -1,10 +1,12 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Lynx
 {
     public class LynxRuntime
     {
-        public Memory Memory { get; private set; } = new Memory();
+        public StackMemory Stack { get; private set; } = new StackMemory();
+        public RegisterMemory Register { get; private set; } = new RegisterMemory();
 
         internal TokenChain Tokens { get; set; }
 
@@ -46,7 +48,7 @@ namespace Lynx
         {
             if (token.TokenType == TokenType.Value)
             {
-                Memory.Push(token.Pattern);
+                Stack.Push(token.Pattern);
             }
             else if (token.TokenType == TokenType.Operation)
             {
@@ -62,7 +64,7 @@ namespace Lynx
                 {
                     foreach (var result in results)
                     {
-                        Memory.Push(result);
+                        Stack.Push(result);
                     }
                 }
             }
@@ -74,7 +76,7 @@ namespace Lynx
 
             for (int i = 0; i < count; i++)
             {
-                data[i] = Memory.Pop();
+                data[i] = Stack.Pop();
             }
 
             return new Arguments(data);

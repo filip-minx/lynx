@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Lynx
 {
-    public class Memory
+    public class StackMemory
     {
         private List<object> data = new List<object>();
 

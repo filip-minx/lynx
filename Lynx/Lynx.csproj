@@ -50,7 +50,9 @@
     <Compile Include="ILanguageProvider.cs" />
     <Compile Include="LynxRuntime.cs" />
     <Compile Include="LynxLanguageProvider.cs" />
-    <Compile Include="Memory.cs" />
+    <Compile Include="Operations\Memory\RegisterRead.cs" />
+    <Compile Include="RegisterMemory.cs" />
+    <Compile Include="StackMemory.cs" />
     <Compile Include="Operation.cs" />
     <Compile Include="OperationsRegister.cs" />
     <Compile Include="Operations\Arithmetic\Addition.cs" />
@@ -63,8 +65,8 @@
     <Compile Include="Operations\Control\Sleep.cs" />
     <Compile Include="Operations\Control\TwoWayCondition.cs" />
     <Compile Include="Operations\Control\While.cs" />
-    <Compile Include="Operations\CopyToTop.cs" />
-    <Compile Include="Operations\DumpStack.cs" />
+    <Compile Include="Operations\Memory\CopyToTop.cs" />
+    <Compile Include="Operations\Memory\DumpStack.cs" />
     <Compile Include="Operations\Control\For.cs" />
     <Compile Include="Operations\FormatString.cs" />
     <Compile Include="Operations\IO\ReadLine.cs" />
@@ -75,10 +77,11 @@
     <Compile Include="Operations\Logic\Negation.cs" />
     <Compile Include="Operations\Logic\Or.cs" />
     <Compile Include="Operations\Logic\Xor.cs" />
-    <Compile Include="Operations\Pop.cs" />
-    <Compile Include="Operations\PopAll.cs" />
+    <Compile Include="Operations\Memory\Pop.cs" />
+    <Compile Include="Operations\Memory\PopAll.cs" />
     <Compile Include="Operations\IO\Write.cs" />
     <Compile Include="Operations\IO\WriteLine.cs" />
+    <Compile Include="Operations\Memory\RegisterWrite.cs" />
     <Compile Include="OperationToken.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="NamedArguments.cs" />

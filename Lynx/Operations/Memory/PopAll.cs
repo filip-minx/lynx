@@ -1,4 +1,4 @@
-﻿namespace Lynx.Operations
+﻿namespace Lynx.Operations.Memory
 {
     public class PopAll : Operation
     {
@@ -10,7 +10,7 @@
 
         public override object[] Execute(Arguments arguments, LynxRuntime runtime)
         {
-            runtime.Memory.Clear();
+            runtime.Stack.Clear();
 
             return null;
         }

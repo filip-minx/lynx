@@ -18,7 +18,7 @@
             {
                 runtime.Tokens.Position = pos;
 
-                runtime.Memory.Push(i);
+                runtime.Stack.Push(i);
 
                 runtime.ExecuteSubroutine(";");
             }

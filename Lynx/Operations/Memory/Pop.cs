@@ -1,4 +1,4 @@
-﻿namespace Lynx.Operations
+﻿namespace Lynx.Operations.Memory
 {
     public class Pop : Operation
     {
@@ -10,7 +10,7 @@
 
         public override object[] Execute(Arguments arguments, LynxRuntime runtime)
         {
-            runtime.Memory.Pop();
+            runtime.Stack.Pop();
 
             return null;
         }

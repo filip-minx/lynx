@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lynx.Operations
+namespace Lynx.Operations.Memory
 {
     public class DumpStack : Operation
     {
@@ -12,7 +12,7 @@ namespace Lynx.Operations
 
         public override object[] Execute(Arguments arguments, LynxRuntime runtime)
         {
-            foreach (var value in runtime.Memory.PopAll())
+            foreach (var value in runtime.Stack.PopAll())
             {
                 Console.WriteLine(value.ToString());
             }

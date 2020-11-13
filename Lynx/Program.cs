@@ -7,7 +7,7 @@ namespace Lynx
     {
         static void Main(string[] args)
         {
-            if (TryPrintCommands())
+            if (TryPrintOperations())
             {
                 Environment.Exit(0);
             }
@@ -50,9 +50,9 @@ namespace Lynx
             return null;
         }
 
-        private static bool TryPrintCommands()
+        private static bool TryPrintOperations()
         {
-            if (NamedArguments.GetAs("PrintCommands", false))
+            if (NamedArguments.GetAs("PrintOperations", false))
             {
                 foreach (var o in OperationsRegister.Operations)
                 {

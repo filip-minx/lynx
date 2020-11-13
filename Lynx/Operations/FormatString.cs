@@ -53,7 +53,7 @@ namespace Lynx.Operations
 
                 int index = int.Parse(peek ? pattern.Substring(1) : pattern);
 
-                formatArguments[index] = peek ? runtime.Memory[index] : runtime.Memory.PopAt(index);
+                formatArguments[index] = peek ? runtime.Stack[index] : runtime.Stack.PopAt(index);
             }
 
             str = formatRegex.Replace(str, "{$2}");

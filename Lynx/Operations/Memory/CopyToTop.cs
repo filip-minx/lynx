@@ -1,4 +1,4 @@
-﻿namespace Lynx.Operations
+﻿namespace Lynx.Operations.Memory
 {
     public class CopyToTop : Operation
     {
@@ -12,9 +12,9 @@
         {
             int valueIndex = arguments.Get<int>(0);
 
-            var value = runtime.Memory.PeekAt(valueIndex);
+            var value = runtime.Stack.PeekAt(valueIndex);
 
-            runtime.Memory.Push(value);
+            runtime.Stack.Push(value);
 
             return null;
         }
