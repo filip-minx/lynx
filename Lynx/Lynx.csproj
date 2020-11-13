@@ -50,6 +50,7 @@
     <Compile Include="ILanguageProvider.cs" />
     <Compile Include="LynxRuntime.cs" />
     <Compile Include="LynxLanguageProvider.cs" />
+    <Compile Include="Operations\Control\Repeat.cs" />
     <Compile Include="Operations\Memory\RegisterRead.cs" />
     <Compile Include="RegisterMemory.cs" />
     <Compile Include="StackMemory.cs" />
