@@ -8,15 +8,14 @@ Contains two language interpratations. Concise and verbose.
 This example shows a function printing the first 11 numbers of the Fibbonacci sequence.
 
 ## Concise interpretation
-    0 1 0l10@0cl1c1c+
+    0 1 0l10@L1c1c+
 
 ## Verbose interpretation
     0
     1
     0 WriteLine
     10 Repeat
-        0 CopyToTop
-        WriteLine
+        PeekWriteLine
         1 CopyToTop
         1 CopyToTop
         Add
