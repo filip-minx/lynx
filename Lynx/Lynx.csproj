@@ -51,6 +51,8 @@
     <Compile Include="LynxRuntime.cs" />
     <Compile Include="LynxLanguageProvider.cs" />
     <Compile Include="Operations\Control\Repeat.cs" />
+    <Compile Include="Operations\IO\PeekWrite.cs" />
+    <Compile Include="Operations\IO\PeekWriteLine.cs" />
     <Compile Include="Operations\Memory\RegisterRead.cs" />
     <Compile Include="RegisterMemory.cs" />
     <Compile Include="StackMemory.cs" />
