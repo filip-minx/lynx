@@ -5,9 +5,12 @@ namespace Lynx
 {
     class Program
     {
+        private static LynxLanguageProvider ConciseLanguageProvider = new LynxLanguageProvider();
+        private static VerboseLynxLanguageProvider VerboseLanguageProvider = new VerboseLynxLanguageProvider();
+
         static void Main(string[] args)
         {
-            if (TryPrintOperations())
+            if (TryPrintOperations() || TryConvertCode())
             {
                 Environment.Exit(0);
             }
@@ -25,11 +28,11 @@ namespace Lynx
         {
             if (NamedArguments.GetAs("Verbose", false))
             {
-                return new VerboseLynxLanguageProvider();
+                return VerboseLanguageProvider;
             }
             else
             {
-                return new LynxLanguageProvider();
+                return ConciseLanguageProvider;
             }
         }
 
@@ -57,6 +60,28 @@ namespace Lynx
                 foreach (var o in OperationsRegister.Operations)
                 {
                     Console.WriteLine($"{o.Identifier} ({o.VerboseIdentifier}), Name: {o.GetType().Name}, Arity: {o.Arity}");
+                }
+
+                return true;
+            }
+
+            return false;
+        }
+        
+        private static bool TryConvertCode()
+        {
+            if (NamedArguments.GetAs("Convert", false))
+            {
+                var code = GetCode();
+                var verbose = NamedArguments.GetAs("Verbose", false);
+
+                if (verbose)
+                {
+                    Console.WriteLine(VerboseLanguageProvider.GenerateCode(ConciseLanguageProvider.Compile(code)));
+                }
+                else
+                {
+                    Console.WriteLine(ConciseLanguageProvider.GenerateCode(VerboseLanguageProvider.Compile(code)));
                 }
 
                 return true;
