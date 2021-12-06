@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Lynx
 {
@@ -17,11 +19,22 @@ namespace Lynx
 
             var languageProvider = GetLanguageProvider();
             var code = GetCode();
-
+            
             var runtime = new LynxRuntime();
+
+            if (TryGetInput(out var input))
+            {
+                runtime.Execute(
+                    languageProvider.Compile(Regex.Unescape(input)));
+            }
 
             runtime.Execute(
                 languageProvider.Compile(code));
+
+            if (Debugger.IsAttached)
+            {
+                Console.ReadLine();
+            }
         }
 
         private static ILanguageProvider GetLanguageProvider()
@@ -88,6 +101,12 @@ namespace Lynx
             }
 
             return false;
+        }
+
+        private static bool TryGetInput(out string input)
+        {
+            return NamedArguments.TryGetAs("InputText", out input)
+                || NamedArguments.TryGetAs("InputFile", out input);
         }
     }
 }

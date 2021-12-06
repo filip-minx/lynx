@@ -1,6 +1,6 @@
 ﻿namespace Lynx.Operations.Logic
 {
-    public class Negation : Operation
+    public class Negate : Operation
     {
         public override string Identifier => "!";
 
@@ -12,14 +12,7 @@
         {
             var arg = arguments.Get<int>(0);
 
-            if (arg == 0)
-            {
-                return new object[] { 1 };
-            }
-            else
-            {
-                return new object[] { 0 };
-            }
+            return new object[] { -arg };
         }
     }
 }

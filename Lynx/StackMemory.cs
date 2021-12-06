@@ -19,7 +19,7 @@ namespace Lynx
             }
             set
             {
-                data[index] = value;
+                data[ReverseIndex(index)] = value;
             }
         }
 

@@ -10,8 +10,8 @@
 
         public override object[] Execute(Arguments arguments, LynxRuntime runtime)
         {
-            var a = arguments.Get<double>(1);
-            var b = arguments.Get<double>(0);
+            var a = arguments.Get<double>(0);
+            var b = arguments.Get<double>(1);
 
             return new object[] { a / b };
         }

@@ -50,10 +50,15 @@
     <Compile Include="ILanguageProvider.cs" />
     <Compile Include="LynxRuntime.cs" />
     <Compile Include="LynxLanguageProvider.cs" />
+    <Compile Include="Operations\Control\PeekFor.cs" />
     <Compile Include="Operations\Control\Repeat.cs" />
     <Compile Include="Operations\IO\PeekWrite.cs" />
     <Compile Include="Operations\IO\PeekWriteLine.cs" />
+    <Compile Include="Operations\Memory\CopyRangeFromTop.cs" />
+    <Compile Include="Operations\Memory\CopyTop.cs" />
+    <Compile Include="Operations\Memory\ReadStackSize.cs" />
     <Compile Include="Operations\Memory\RegisterRead.cs" />
+    <Compile Include="Operations\Memory\SwapWithNextAt.cs" />
     <Compile Include="RegisterMemory.cs" />
     <Compile Include="StackMemory.cs" />
     <Compile Include="Operation.cs" />
@@ -77,7 +82,7 @@
     <Compile Include="Operations\Logic\Equals.cs" />
     <Compile Include="Operations\Logic\Greater.cs" />
     <Compile Include="Operations\Logic\Lower.cs" />
-    <Compile Include="Operations\Logic\Negation.cs" />
+    <Compile Include="Operations\Logic\Negate.cs" />
     <Compile Include="Operations\Logic\Or.cs" />
     <Compile Include="Operations\Logic\Xor.cs" />
     <Compile Include="Operations\Memory\Pop.cs" />
