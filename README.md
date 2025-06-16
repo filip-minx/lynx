@@ -2,10 +2,10 @@
 
 Simple and easily extensible golfing language.
 
-Contains two language interpratations. Concise and verbose.
+Contains two language interpretations. Concise and verbose.
 
 # Example
-This example shows a function printing the first 11 numbers of the Fibbonacci sequence.
+This example shows a function printing the first 11 numbers of the Fibonacci sequence.
 
 ## Concise interpretation
     0 1 0l10@L1c1c+
