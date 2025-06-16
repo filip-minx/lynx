@@ -64,8 +64,8 @@ namespace Lynx
 
         public object PopAt(int index)
         {
-            // The index needs to be reversed because the pop 
-            // operation indexes items from the end of the list.
+            // The stack grows upward so element 0 is the bottom. Reverse the
+            // supplied index to reference items relative to the current top.
             var reversedIndex = ReverseIndex(index);
 
             var value = data[reversedIndex];
@@ -79,8 +79,8 @@ namespace Lynx
 
         public object PeekAt(int index)
         {
-            // The index needs to be reversed because the peek 
-            // operation indexes items from the end of the list.
+            // Stack data is stored bottom-to-top. Reverse the index so
+            // callers access values relative to the top element.
             var reversedIndex = ReverseIndex(index);
 
             return data[reversedIndex];
